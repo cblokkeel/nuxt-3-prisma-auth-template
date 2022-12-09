@@ -1,5 +1,3 @@
-import { env } from 'node:process';
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@sidebase/nuxt-auth'],
@@ -15,8 +13,8 @@ export default defineNuxtConfig({
   },
   auth: {
     isEnabled: true,
-    origin: env.NUXT_AUTH_ORIGIN,
-    basePath: env.NUXT_AUTH_BASE_PATH,
+    origin: process.env.NUXT_AUTH_ORIGIN,
+    basePath: process.env.NUXT_AUTH_BASE_PATH,
     enableSessionRefreshPeriodically: false,
     enableSessionRefreshOnWindowFocus: true,
     enableGlobalAppMiddleware: false,
