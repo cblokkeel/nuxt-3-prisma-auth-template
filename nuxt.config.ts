@@ -13,8 +13,8 @@ export default defineNuxtConfig({
   },
   auth: {
     isEnabled: true,
-    origin: process.env.NUXT_AUTH_ORIGIN,
-    basePath: process.env.NUXT_AUTH_BASE_PATH,
+    origin: process.env.NUXT_AUTH_ORIGIN || 'https://virtus-app.vercel.app/',
+    basePath: process.env.NUXT_AUTH_BASE_PATH || '/api/auth',
     enableSessionRefreshPeriodically: false,
     enableSessionRefreshOnWindowFocus: true,
     enableGlobalAppMiddleware: false,
