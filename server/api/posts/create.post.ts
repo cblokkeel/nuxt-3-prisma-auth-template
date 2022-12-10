@@ -1,7 +1,7 @@
 import { PostSchema } from './../../schemas/post.schema';
 import { getServerSession } from '#auth';
 import { zh } from 'h3-zod';
-import prisma from '../../../lib/prisma';
+import { prisma } from '~~/lib/prisma';
 import { Post } from '~~/lib/types';
 
 export default defineEventHandler(async (event): Promise<Post> => {
