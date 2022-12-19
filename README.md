@@ -1,42 +1,24 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Auth with prisma template
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+### Get started
 
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
+To start a new nuxt 3 project from this template, use : 
+```
+npx nuxi init -t gh:cblokkeel/nuxt-3-prisma-auth-template <name>
 ```
 
-## Development Server
+Add .env to your project with :
+NUXT_AUTH_ORIGIN : your domain (no '/' at the end)
+NUXT_AUTH_BASE_PATH : '/api/auth'
+NUXT_SECRET : your secret
 
-Start the development server on http://localhost:3000
+if you use google as a provider like this template : 
+GOOGLE_CLIENT_ID && GOOGLE_CLIENT_SECRET 
 
-```bash
-npm run dev
-```
+Feel free to use whatever provider available with sidebase/nuxt-auth
 
-## Production
+And finally for database :
 
-Build the application for production:
+DATABASE_URL
 
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Then, update your schema.prisma in server/database folder
