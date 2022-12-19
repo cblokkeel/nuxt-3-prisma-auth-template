@@ -572,7 +572,7 @@
     "@nuxt/kit" "^3.0.0"
     pinia ">=2.0.27"
 
-"@prisma/client@4.7.1":
+"@prisma/client@4.7.1", "@prisma/client@^4.7.1":
   version "4.7.1"
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-4.7.1.tgz#66fe84aca25de17cb3d9141dec003f34714914b9"
   integrity sha512-/GbnOwIPtjiveZNUzGXOdp7RxTEkHL4DZP3vBaFNadfr6Sf0RshU5EULFzVaSi9i9PIK9PYd+1Rn7z2B2npb9w==
@@ -676,6 +676,14 @@
     next-auth "4.18.0"
     requrl "^3.0.2"
     ufo "^1.0.0"
+
+"@sidebase/nuxt-prisma@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@sidebase/nuxt-prisma/-/nuxt-prisma-0.1.0.tgz#07deacfb71bf6bf60a3124d82d4d280c623cef0c"
+  integrity sha512-owJGQrgRlePDWeIFwhqbXlfejk9nMRBUi9BkSCEgYXcNhWdwwLrbjyZ+1torYKbSlUxPBss8uK7eH36lNJDQUQ==
+  dependencies:
+    "@prisma/client" "^4.7.1"
+    h3 "^1.0.1"
 
 "@trysound/sax@0.2.0":
   version "0.2.0"

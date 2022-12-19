@@ -18,27 +18,21 @@
 </template>
 
 <script setup lang="ts">
-import { Post } from '~~/lib/types';
+import { usePostStore } from '~~/stores/postStore';
+
+definePageMeta({ middleware: 'auth' });
+
+const store = usePostStore();
+
+const posts = computed(() => store.posts);
 
 const postInput = ref('');
-const posts = ref<Post[]>([]);
-const errorMessage = ref('');
 
 const handleAddPost = async () => {
   if (postInput.value !== '') {
-    try {
-      const newPost: Post = await $fetch('/api/posts/create', {
-        method: 'POST',
-        body: JSON.stringify({ post: postInput.value }),
-      });
-
-      console.log(newPost);
-
-      posts.value.push(newPost);
+    const result = await store.addPost(postInput.value);
+    if (result) {
       clearInputs();
-    } catch (error) {
-      console.log('error', error);
-      errorMessage.value = 'Error. Please try again';
     }
   }
 };
@@ -48,11 +42,6 @@ const clearInputs = () => {
 };
 
 onMounted(async () => {
-  try {
-    posts.value = await $fetch('/api/posts/getAll');
-  } catch (error) {
-    console.log('error', error);
-    errorMessage.value = 'Not authenticated';
-  }
+  store.loadPosts();
 });
 </script>

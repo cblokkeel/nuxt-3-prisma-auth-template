@@ -1,6 +1,6 @@
 import { getServerSession } from '#auth';
 import { Post } from '~~/lib/types';
-import { prisma } from '~~/lib/prisma';
+import { getPostsByUser } from '~~/server/app/services/postsService';
 
 export default defineEventHandler(async (event): Promise<Post[]> => {
   const session = await getServerSession(event);
@@ -9,19 +9,5 @@ export default defineEventHandler(async (event): Promise<Post[]> => {
     throw createError({ statusMessage: 'Unauthenticated', statusCode: 403 });
   }
 
-  const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
-  });
-
-  if (!user) {
-    throw createError({ statusMessage: 'User not found', statusCode: 404 });
-  }
-
-  const posts = await prisma.post.findMany({
-    where: {
-      userId: user.id,
-    },
-  });
-
-  return posts;
+  return await getPostsByUser(session.user.email);
 });
