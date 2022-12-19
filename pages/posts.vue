@@ -20,8 +20,6 @@
 <script setup lang="ts">
 import { usePostStore } from '~~/stores/postStore';
 
-definePageMeta({ middleware: 'auth' });
-
 const store = usePostStore();
 
 const posts = computed(() => store.posts);
